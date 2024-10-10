@@ -1,7 +1,14 @@
 ﻿# 获取当前脚本路径
 $currentScriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 
+# 检查是否提供了输入参数
+if ($args.Count -eq 0) {
+    Write-Host "No input provided. Exiting script."
+    exit
+}
+
 $inputZipFile = $args[0]
+
 # 获取不带后缀的文件名
 $fileNameWithoutExtension = [System.IO.Path]::GetFileNameWithoutExtension($inputZipFile)
 
